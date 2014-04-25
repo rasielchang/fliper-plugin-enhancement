@@ -35,9 +35,9 @@ class FliperPluginEnhancement {
 			return false;
 
 		// Get post data
-		$post_title = get_the_title( $post_id ) . ' | ' . get_bloginfo();
+		$post_title = get_post_field( 'post_title', $post_id, 'raw' ) . ' | ' . get_bloginfo();
 		$post_content = get_post_field('post_content', $post_id );
-		$post_excerpt = wp_trim_words( $post_content, 140, '...' );
+		$post_excerpt = html_entity_decode( wp_trim_words( $post_content, 140, '...' ) );
 
 		if ( '' == get_post_meta( $post_id, '_su_title', true ) ) {
 			add_post_meta( $post_id, '_su_title', $post_title, true );
