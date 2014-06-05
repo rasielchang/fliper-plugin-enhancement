@@ -9,6 +9,9 @@ Wordpress plugin for FLiPER used, it customize other Wordpress plugins to make t
 
 == Changelog ==
 
+= Version 0.1.1 (June 5, 2014) =
+* Fix bug: insert shortcode into post excerpt
+
 = Version 0.1.0 (April 24, 2014) =
 * Initial release
 * SEO Ultilmate Plugin customize, for automaticly filling post seo data.

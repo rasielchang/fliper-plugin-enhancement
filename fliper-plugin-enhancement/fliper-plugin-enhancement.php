@@ -3,7 +3,7 @@
  * Plugin Name: fliper-plugin-enhancement
  * Plugin URI: http://company.flipermag.com
  * Description: Wordpress plugin for FLiPER used, it customize other Wordpress plugins to make things easier.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Rasiel
  * Author URI: http://company.flipermag.com
  */
@@ -37,6 +37,7 @@ class FliperPluginEnhancement {
 		// Get post data
 		$post_title = get_post_field( 'post_title', $post_id, 'raw' ) . ' | ' . get_bloginfo();
 		$post_content = get_post_field('post_content', $post_id );
+		$post_content = strip_shortcodes( $post_content );
 		$post_excerpt = html_entity_decode( wp_trim_words( $post_content, 140, '...' ) );
 
 		if ( '' == get_post_meta( $post_id, '_su_title', true ) ) {
