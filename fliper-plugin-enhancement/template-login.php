@@ -26,9 +26,11 @@ Template Name: FLiPER Login Template
   <style type="text/css">
   a:hover {
     color:#39308e;
+    font-weight: normal;
   }
   a {
     text-decoration: none;
+    font-weight: normal;
   }
   #login-block {
     margin-left:-140px;
@@ -47,12 +49,11 @@ Template Name: FLiPER Login Template
     margin: 0 auto;
   }
   #login-block #login-submit {
-    width: 175px;
-  }
-  #login-block #sign-up-submit {
-    width: 100px;
-    padding: 0;
-    background-color:#fff; 
+    background:#67ae55;
+    border:1px solid #67ae55;
+    font-size: 14px;
+    width: 140px;
+    margin-right:18px;
   }
   #login-block #email-input {
     margin-bottom:0px;
@@ -72,14 +73,21 @@ Template Name: FLiPER Login Template
   }
   #login-block #facebook-login-button {
     background-color:#3B5998;
+    border:1px solid #3B5998;
   }
   #login-block #facebook-login-button a {
     text-decoration: none;
     color:#fff;
+    font-size:14px;
+    font-weight: normal;
   }
   #login-block .description {
-    font-size:18px;
+    font-size:12px;
     color:#fff;
+    text-decoration: underline;
+  }
+  #login-block .button-registration {
+    background-color:#fff; 
   }
   #login-page #footer {
     position:absolute;
@@ -132,30 +140,22 @@ Template Name: FLiPER Login Template
     <div class="row">
       <div id="login-block">
         <h1 id="logo"><a href="/">FLiPER MAG</a></h1>
-        <p>輕鬆閱讀，來自全世界的創意</p>
+        <p>閱讀，來自全世界的創意</p>
         <form id="login-form" name="loginform" action="<?php echo get_option( 'home' ); ?>/wp-login.php" method="post">
-          <button id="facebook-login-button" class="button-default u-full-width"><a href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">Facebook Login</a></button>
+          <button id="facebook-login-button" class="button-default u-full-width"><a href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">使用 Facebook 註冊</a></button>
+          <p style="margin-bottom: 16px;margin-top: 5px;">或</p>
           <input name="log" class="u-full-width" type="text" placeholder="電子信箱" id="email-input" />
           <input name="pwd" class="u-full-width" type="password" placeholder="密碼" id="password-input" />
-          <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="Login" />
+          <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="註冊" />
           <input type="hidden" name="redirect_to" value="<?php echo get_option( 'home' ); ?>" />
           <input type="hidden" name="testcookie" value="1" />
-          <input class="button-default" type="submit" id="sign-up-submit" value="Sign Up" />
+          <!--<a style="margin-left:20px;color:#fff;" href="<?php //echo get_option('home'); ?>/wp-login.php?action=lostpassword" title="忘記密碼">忘記密碼</a>-->
+          <a class="description" href="" target="_blank">FLiPER 可以幹嘛？</a>
+          <!--<input class="button-default" type="submit" id="sign-up-submit" value="Sign Up" />-->
         </form>
-        <p><a class="description" href="" target="_blank">FLiPER 可以幹嘛？</a></p>
       </div>
     </div>
   </div>
-
-<!--
-<p id="nav">
-
-<a href="<?php echo get_option('home'); ?>/wp-login.php?action=lostpassword" title="Password Lost and Found">Lost your password?</a>
-
-</p>
--->
-
-
 
   <div id="footer">
     <ul class="clearfix">
@@ -171,6 +171,7 @@ Template Name: FLiPER Login Template
 
   <script type="text/javascript">
     jQuery.backstretch( '<?php echo plugins_url( "images/index-background.jpg", __FILE__ ); ?>');
+    var e = jQuery('.backstretch').append('<div style="width:100%;height:100%;opacity:0.3;background:#000;"></div>');
   </script>
 
 </body>
