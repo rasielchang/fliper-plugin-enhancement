@@ -49,6 +49,9 @@ Template Name: FLiPER Login Template
     margin: 0 auto;
   }
   #login-block #login-submit {
+    
+  }
+  #login-block #login-submit {
     background:#67ae55;
     border:1px solid #67ae55;
     font-size: 14px;
@@ -71,11 +74,9 @@ Template Name: FLiPER Login Template
   #login-block #login-form {
     margin-bottom:0px;
   }
-  #login-block #facebook-login-button {
+  #login-block #facebook-login-button button{
     background-color:#3B5998;
     border:1px solid #3B5998;
-  }
-  #login-block #facebook-login-button a {
     text-decoration: none;
     color:#fff;
     font-size:14px;
@@ -85,9 +86,6 @@ Template Name: FLiPER Login Template
     font-size:12px;
     color:#fff;
     text-decoration: underline;
-  }
-  #login-block .button-registration {
-    background-color:#fff; 
   }
   #login-page #footer {
     position:absolute;
@@ -129,29 +127,38 @@ Template Name: FLiPER Login Template
     content:'.';
     line-height: 0px;
   }
+  #login-page #button-top-fix button {
+    background: #fff;
+    font-size:14px;
+    position: fixed;
+    top:20px;
+    right:20px;
+    color:#000;
+    text-decoration: none;
+  }
   </style>
 
 </head>
 <body id="login-page" <?php body_class(); ?>>
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <a id="button-top-fix" href="<?php echo site_url(); ?>/registration"><button class="button-default">註冊</button></a>
+
   <div class="container">
     <div class="row">
       <div id="login-block">
         <h1 id="logo"><a href="/">FLiPER MAG</a></h1>
         <p>閱讀，來自全世界的創意</p>
+        <a  id="facebook-login-button" href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">
+          <button class="button-default u-full-width">使用 Facebook 登入</button>
+        </a>
         <form id="login-form" name="loginform" action="<?php echo get_option( 'home' ); ?>/wp-login.php" method="post">
-          <button id="facebook-login-button" class="button-default u-full-width"><a href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">使用 Facebook 註冊</a></button>
           <p style="margin-bottom: 16px;margin-top: 5px;">或</p>
           <input name="log" class="u-full-width" type="text" placeholder="電子信箱" id="email-input" />
           <input name="pwd" class="u-full-width" type="password" placeholder="密碼" id="password-input" />
-          <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="註冊" />
+          <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="登入" />
           <input type="hidden" name="redirect_to" value="<?php echo get_option( 'home' ); ?>" />
           <input type="hidden" name="testcookie" value="1" />
-          <!--<a style="margin-left:20px;color:#fff;" href="<?php //echo get_option('home'); ?>/wp-login.php?action=lostpassword" title="忘記密碼">忘記密碼</a>-->
-          <a class="description" href="" target="_blank">FLiPER 可以幹嘛？</a>
-          <!--<input class="button-default" type="submit" id="sign-up-submit" value="Sign Up" />-->
+          <a class="description" href="<?php echo get_option('home'); ?>/wp-login.php?action=lostpassword" title="忘記密碼">忘記密碼</a>
         </form>
       </div>
     </div>
