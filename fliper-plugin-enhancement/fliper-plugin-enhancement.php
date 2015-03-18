@@ -58,6 +58,7 @@ class FliperPluginEnhancement {
         // Add fliper templates data.
 		$this->templates = array(
             'template-login.php' => 'FLiPER Login Template',
+            'template-registration.php' => 'FLiPER Registration Template'
         );
 
         add_action( 'admin_init', array( $this, 'init' ) );
