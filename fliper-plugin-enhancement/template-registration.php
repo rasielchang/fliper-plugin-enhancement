@@ -4,6 +4,8 @@ Template Name: FLiPER Registration Template
 */
 ?>
 
+<?php if ( is_user_logged_in() ) { wp_safe_redirect( site_url() ); } ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head>
