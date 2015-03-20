@@ -4,7 +4,8 @@ Template Name: FLiPER Login Template
 */
 ?>
 
-<?php if ( is_user_logged_in() ) { wp_safe_redirect( site_url() ); } ?>
+<?php if ( is_user_logged_in() ) { wp_safe_redirect( site_url() . '/apply-columnist' ); } ?>
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
@@ -51,14 +52,13 @@ Template Name: FLiPER Login Template
     margin: 0 auto;
   }
   #login-block #login-submit {
-    
-  }
-  #login-block #login-submit {
     background:#67ae55;
     border:1px solid #67ae55;
     font-size: 14px;
-    width: 140px;
-    margin-right:18px;
+    width: 190px;
+    text-transform: none;
+    margin-right:15px;
+    padding:0px;
   }
   #login-block #email-input {
     margin-bottom:0px;
@@ -68,7 +68,7 @@ Template Name: FLiPER Login Template
     border-top:0px;
     border-radius: 0 0 4px 4px;
   }
-  #login-block p {
+  #login-block .sub-title {
     font-size: 21px;
     text-align: center;
     color:#fff;
@@ -83,11 +83,13 @@ Template Name: FLiPER Login Template
     color:#fff;
     font-size:14px;
     font-weight: normal;
+    text-transform: none;
   }
   #login-block .description {
     font-size:12px;
     color:#fff;
     text-decoration: underline;
+    margin-right:20px;
   }
   #login-page #footer {
     position:absolute;
@@ -138,39 +140,72 @@ Template Name: FLiPER Login Template
     color:#000;
     text-decoration: none;
   }
+  .error-notice {
+    color:#000;
+    border-radius:3px;
+    font-size:12px;
+    padding:10px;
+    background:rgb(255, 236, 236);
+    border:1px solid #f5aca6;
+  }
+  .mobile-show {
+    display:none;
+  }
+  @media only screen and ( max-width: 999px ) {
+    .mobile-hide {
+      display:none;
+    }
+    .mobile-show {
+      display:block;
+    }
+    .backstretch {
+      display:none;
+    }
+  }
   </style>
 
 </head>
 <body id="login-page" <?php body_class(); ?>>
 
-  <a id="button-top-fix" href="<?php echo site_url(); ?>/registration"><button class="button-default">註冊</button></a>
+  <div class="mobile-hide">
 
-  <div class="container">
-    <div class="row">
-      <div id="login-block">
-        <h1 id="logo"><a href="/">FLiPER MAG</a></h1>
-        <p>閱讀，來自全世界的創意</p>
-        <a  id="facebook-login-button" href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">
-          <button class="button-default u-full-width">使用 Facebook 登入</button>
-        </a>
-        <form id="login-form" name="loginform" action="<?php echo get_option( 'home' ); ?>/wp-login.php" method="post">
-          <p style="margin-bottom: 16px;margin-top: 5px;">或</p>
-          <input name="log" class="u-full-width" type="text" placeholder="電子信箱" id="email-input" />
-          <input name="pwd" class="u-full-width" type="password" placeholder="密碼" id="password-input" />
-          <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="登入" />
-          <input type="hidden" name="redirect_to" value="<?php echo get_option( 'home' ); ?>" />
-          <input type="hidden" name="testcookie" value="1" />
-          <a class="description" href="<?php echo get_option('home'); ?>/wp-login.php?action=lostpassword" title="忘記密碼">忘記密碼</a>
-        </form>
+    <div class="container">
+      <div class="row">
+        <div id="login-block">
+          <h1 id="logo"><a href="/">FLiPER MAG</a></h1>
+          <p class="sub-title">寫下思想，傳遞溫度</p>
+          <a  id="facebook-login-button" href="<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect=<?php echo site_url(); ?>/apply-columnist/form" onclick="window.location = '<?php echo site_url(); ?>/wp-login.php?loginFacebook=1&redirect='+window.location.href; return false;" class="fliper-fb-login" style="color:#fff;">
+            <button class="button-default u-full-width">使用 Facebook 帳號申請</button>
+          </a>
+          <form id="login-form" name="loginform" action="<?php echo get_option( 'home' ); ?>/wp-login.php" method="post">
+            <p class="sub-title" style="margin-bottom: 16px;margin-top: 5px;">或</p>
+            <input name="log" class="u-full-width" type="text" placeholder="電子信箱" id="email-input" />
+            <input name="pwd" class="u-full-width" type="password" placeholder="密碼" id="password-input" />
+            <?php //<p class="error-notice">帳號或密碼錯誤，請重新輸入</p> ?>
+            <input name="wp-submit" class="button-primary" type="submit" id="login-submit" value="使用 FLiPER 帳號申請" />
+            <input type="hidden" name="redirect_to" value="<?php echo get_option( 'home' ); ?>/apply-columnist/form" />
+            <input type="hidden" name="testcookie" value="1" />
+            <a class="description" href="<?php echo get_option('home'); ?>/wp-login.php?action=lostpassword" target="_blank">忘記密碼</a>
+            <a class="description" href="<?php echo site_url(); ?>/apply-columnist/registration">註冊 FLiPER 帳號</a>
+            <p><a class="description" href="<?php echo site_url(); ?>/apply-columnist" target="_blank">成為 FLiPER 專欄作家可以幹嘛？</a></p>
+          </form>
+        </div>
       </div>
     </div>
+
+    <div id="footer">
+      <ul class="clearfix">
+        <li><a href="/terms-of-service/" target="_blank">服務條款</a></li>
+        <li><a href="/privacy-policy/" target="_blank">隱私權政策</a></li>
+      </ul>
+    </div>
+
   </div>
 
-  <div id="footer">
-    <ul class="clearfix">
-      <li><a href="/terms-of-service/" target="_blank">服務條款</a></li>
-      <li><a href="/privacy-policy/" target="_blank">隱私權政策</a></li>
-    </ul>
+  <div class="mobile-show">
+
+    <p style="padding:20px;">請使用寬度超過 1000 px 的螢幕觀看</p>
+
   </div>
 
 
